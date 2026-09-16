@@ -19,6 +19,6 @@ AI tool used: Claude
 I however went and reviewed the files to make sure they looked good.
 
 **Helping me format Certain Files**
- I used claude to help format certain files to make them look good inside of the VM
+ I used claude to help format certain files to make them look good inside of the VM -- markdown for certain files including README. 
 
 **Debugging the Task 3 trials.** When the task 3 trials where not exactly working I used claude to help figure out what the output was saying and used it to tweak my code. 
