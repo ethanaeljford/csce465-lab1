@@ -29,6 +29,10 @@ deviations from the assignment's tested baseline.
     README.md                   This file
 
 Download Open claw outside of the repo
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash source "$HOME/.nvm/nvm.sh" nvm install 24.18.0 nvm alias default 24.18.0 node --version npm --version
+npm install -g openclaw@2026.7.1-2
+openclaw --version
+
 ## Setup
 
 install the safe_marker skill
@@ -37,10 +41,18 @@ and verify it is imported
 
 make sure your chat gpt key is being used
 
+export TAMU_API_KEY="<your key>"
+node tamu-shim.mjs # listens on http://127.0.0.1:8899 — leave it runningLab Setup
+
 verify it is listening
 
-configure the open claw with the instructions given on the doc provided by the professor. 
-\
+configure the open claw with the instructions given on the doc provided by the professor against the shim:
+
+openclaw onboard --non-interactive --accept-risk \--auth-choice custom-api-key --custom-provider-id tamus \--custom-compatibility
+openai \--custom-base-url "http://127.0.0.1:8899/openai" \--custom-api-key via-shim \--custom-model-id "protected.gpt-4o" --skipchannelsopenclaw
+config set models.providers.tamus.request.allowPrivateNetwork trueopenclaw config set
+agents.defaults.timeoutSeconds 600openclaw config set agents.defaults.memorySearch.enabled falseopenclaw config
+validateopenclaw models set tamus/protected.gpt-4oopenclaw daemon install && openclaw daemon startTask 1.5 Verify Lab Setup
 
 ## Task 2 — marker script tests
 
